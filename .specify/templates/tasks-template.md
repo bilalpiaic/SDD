@@ -49,32 +49,35 @@
 
 ## Phase 3.2: Tests First (TDD) ⚠️ MUST COMPLETE BEFORE 3.3
 **CRITICAL: These tests MUST be written and MUST FAIL before ANY implementation**
-- [ ] T004 [P] Contract test POST /api/users in tests/contract/test_users_post.py
-- [ ] T005 [P] Contract test GET /api/users/{id} in tests/contract/test_users_get.py
-- [ ] T006 [P] Integration test user registration in tests/integration/test_registration.py
-- [ ] T007 [P] Integration test auth flow in tests/integration/test_auth.py
+- [ ] T004 [P] JSON-RPC MCP contract test for Invoices module in tests/contract/test_mcp_invoices.py
+- [ ] T005 [P] JSON-RPC MCP contract test for Reports module in tests/contract/test_mcp_reports.py
+- [ ] T006 [P] Integration test for natural language → JSON-RPC translation in tests/integration/test_nlp_to_jsonrpc.py
+- [ ] T007 [P] Integration test for OAuth2 Xero authentication flow in tests/integration/test_xero_auth.py
+- [ ] T008 [P] Wireframe UI component tests for tiles/cards in tests/visual/test_wireframe_components.py
 
 ## Phase 3.3: Core Implementation (ONLY after tests are failing)
-- [ ] T008 [P] User model in src/models/user.py
-- [ ] T009 [P] UserService CRUD in src/services/user_service.py
-- [ ] T010 [P] CLI --create-user in src/cli/user_commands.py
-- [ ] T011 POST /api/users endpoint
-- [ ] T012 GET /api/users/{id} endpoint
-- [ ] T013 Input validation
-- [ ] T014 Error handling and logging
+- [ ] T009 [P] MCP JSON-RPC client integration in backend/src/mcp/jsonrpc_client.py
+- [ ] T010 [P] Xero OAuth2 authentication service in backend/src/auth/xero_oauth.py
+- [ ] T011 [P] Natural language processing service in backend/src/services/nlp_service.py
+- [ ] T012 [P] Wireframe tile component in frontend/src/components/WireframeTile.tsx
+- [ ] T013 [P] Wireframe card component in frontend/src/components/WireframeCard.tsx
+- [ ] T014 FastAPI chatbot API endpoints in backend/src/api/chatbot.py
+- [ ] T015 MCP module services (Invoices, Reports, etc.) in backend/src/services/mcp_modules.py
+- [ ] T016 Drag-and-drop module reordering in frontend/src/components/DragDropDashboard.tsx
 
 ## Phase 3.4: Integration
-- [ ] T015 Connect UserService to DB
-- [ ] T016 Auth middleware
-- [ ] T017 Request/response logging
-- [ ] T018 CORS and security headers
+- [ ] T017 Connect MCP services to JSON-RPC client
+- [ ] T018 Integrate OAuth2 with MCP requests
+- [ ] T019 Wire chatbot UI to backend API
+- [ ] T020 Implement confirmation prompts for destructive operations
+- [ ] T021 Error handling for MCP failures and JSON-RPC errors
 
 ## Phase 3.5: Polish
-- [ ] T019 [P] Unit tests for validation in tests/unit/test_validation.py
-- [ ] T020 Performance tests (<200ms)
-- [ ] T021 [P] Update docs/api.md
-- [ ] T022 Remove duplication
-- [ ] T023 Run manual-testing.md
+- [ ] T022 [P] Unit tests for JSON-RPC protocol handling in tests/unit/test_jsonrpc.py
+- [ ] T023 [P] Performance tests for natural language processing (<2s) in tests/performance/test_nlp_speed.py
+- [ ] T024 [P] Visual regression tests for wireframe components in tests/visual/test_wireframe_regression.py
+- [ ] T025 [P] Update documentation for MCP integration patterns
+- [ ] T026 Constitution compliance validation and cleanup
 
 ## Dependencies
 - Tests (T004-T007) before implementation (T008-T014)

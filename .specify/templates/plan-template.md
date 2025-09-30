@@ -47,7 +47,17 @@
 ## Constitution Check
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+**I. MCP-First Integration**: ✅ All Xero functionality accessed via Xero-MCP-Server | ❌ Direct Xero API calls detected
+**II. JSON-RPC Protocol**: ✅ All MCP requests use JSON-RPC 2.0 | ❌ Non-standard MCP communication found  
+**III. Wireframe-First UI**: ✅ Results displayed as tiles/cards/report blocks | ❌ Complex UI components detected
+**IV. Modular Architecture**: ✅ Clear separation: Frontend/Backend/MCP layers | ❌ Tightly coupled components found
+**V. Extensibility**: ✅ New MCP modules can integrate without core changes | ❌ Hardcoded module dependencies detected
+
+**Technical Standards Check**:
+- ✅ OAuth2 with Xero | ❌ Alternative auth method
+- ✅ Confirmation prompts for destructive operations | ❌ Direct execution without confirmation  
+- ✅ Stack: NextJS+TailwindCSS+Lucid React+FastAPI+Agentic SDK | ❌ Unsupported technology stack
+- ✅ Natural language → JSON-RPC translation < 2s | ❌ Performance requirements not met
 
 ## Project Structure
 
@@ -63,50 +73,34 @@ specs/[###-feature]/
 ```
 
 ### Source Code (repository root)
-<!--
-  ACTION REQUIRED: Replace the placeholder tree below with the concrete layout
-  for this feature. Delete unused options and expand the chosen structure with
-  real paths (e.g., apps/admin, packages/something). The delivered plan must
-  not include Option labels.
--->
 ```
-# [REMOVE IF UNUSED] Option 1: Single project (DEFAULT)
-src/
-├── models/
-├── services/
-├── cli/
-└── lib/
-
-tests/
-├── contract/
-├── integration/
-└── unit/
-
-# [REMOVE IF UNUSED] Option 2: Web application (when "frontend" + "backend" detected)
+# Xero MCP Wireframe Chatbot - Web Application Structure
 backend/
 ├── src/
-│   ├── models/
-│   ├── services/
-│   └── api/
+│   ├── models/          # MCP response models, user session models
+│   ├── services/        # MCP integration services, NLP processing
+│   ├── api/            # FastAPI endpoints for chatbot communication
+│   ├── mcp/            # JSON-RPC MCP client integration
+│   └── auth/           # OAuth2 Xero authentication
 └── tests/
+    ├── contract/       # JSON-RPC MCP contract tests
+    ├── integration/    # End-to-end chatbot flow tests
+    └── unit/          # Service and model unit tests
 
 frontend/
 ├── src/
-│   ├── components/
-│   ├── pages/
-│   └── services/
+│   ├── components/     # Wireframe UI components (tiles, cards, blocks)
+│   ├── pages/         # Chat interface and dashboard pages
+│   ├── services/      # API communication with backend
+│   ├── types/         # TypeScript definitions for MCP responses
+│   └── utils/         # Drag-and-drop, animation utilities
 └── tests/
-
-# [REMOVE IF UNUSED] Option 3: Mobile + API (when "iOS/Android" detected)
-api/
-└── [same as backend above]
-
-ios/ or android/
-└── [platform-specific structure: feature modules, UI flows, platform tests]
+    ├── visual/        # Wireframe component regression tests
+    ├── interaction/   # Drag-and-drop and animation tests
+    └── unit/         # Component unit tests
 ```
 
-**Structure Decision**: [Document the selected structure and reference the real
-directories captured above]
+**Structure Decision**: Web application with separate backend (FastAPI + MCP integration) and frontend (NextJS + wireframe UI) to support the chatbot architecture with clear separation between natural language processing, MCP protocol handling, and wireframe visualization.
 
 ## Phase 0: Outline & Research
 1. **Extract unknowns from Technical Context** above:
