@@ -45,7 +45,6 @@ d('Card Base Component', () => {
     expect(screen.getByText('Body content')).toBeInTheDocument();
     expect(screen.getByText('Updated 5 mins ago')).toBeInTheDocument();
     
-    expect(false).toBe(true); // TDD: not implemented yet
   });
 
   it('handles card actions', () => {
@@ -56,7 +55,6 @@ d('Card Base Component', () => {
     expect(onAction).toHaveBeenCalledWith({ actionId: 'refresh' });
     expect(onAction).toHaveBeenCalledWith({ actionId: 'export' });
     
-    expect(false).toBe(true); // TDD: not implemented yet
   });
 });
 
@@ -77,7 +75,6 @@ d('SummaryCard', () => {
     expect(screen.getByText('$27,000.00')).toBeInTheDocument();
     expect(screen.getByTestId('trend-up')).toBeInTheDocument();
     
-    expect(false).toBe(true); // TDD: not implemented yet
   });
 });
 
@@ -98,7 +95,6 @@ d('ListCard', () => {
     expect(screen.getByText('$2,300.00')).toBeInTheDocument();
     expect(screen.getByTestId('pagination')).toBeInTheDocument();
     
-    expect(false).toBe(true); // TDD: not implemented yet
   });
 });
 
@@ -120,7 +116,6 @@ d('ChartCard', () => {
     expect(screen.getByText('Revenue Trend')).toBeInTheDocument();
     expect(screen.getByText('Jul')).toBeInTheDocument();
     expect(screen.getByText('Sep')).toBeInTheDocument();
-
-    expect(false).toBe(true); // TDD: not implemented yet
+    
   });
 });

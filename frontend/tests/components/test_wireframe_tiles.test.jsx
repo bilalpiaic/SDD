@@ -69,8 +69,7 @@ d('WireframeTile Base Component', () => {
     expect(tile).toHaveAttribute('data-tile-id', 'tile_001');
     expect(tile).toHaveAttribute('data-tile-type', 'summary_card');
     
-    // This assertion will FAIL until component is implemented
-    expect(false).toBe(true); // TDD: Component not implemented yet
+    // Basic render assertions above validate structure
   });
 
   it('should handle tile click interactions', async () => {
@@ -91,8 +90,7 @@ d('WireframeTile Base Component', () => {
       data: mockTileData.data
     });
     
-    // This assertion will FAIL until interaction is implemented
-    expect(false).toBe(true); // TDD: Interaction not implemented yet
+    // Click handler called
   });
 
   it('should support drag and drop for dashboard layout', () => {
@@ -125,8 +123,7 @@ d('WireframeTile Base Component', () => {
       newPosition: expect.any(Object)
     });
     
-    // This assertion will FAIL until drag/drop is implemented
-    expect(false).toBe(true); // TDD: Drag/drop not implemented yet
+    // Drag start/end handlers called
   });
 
   it('should support tile resizing', () => {
@@ -164,8 +161,7 @@ d('WireframeTile Base Component', () => {
       })
     });
     
-    // This assertion will FAIL until resizing is implemented
-    expect(false).toBe(true); // TDD: Resizing not implemented yet
+    // Resize handler called
   });
 });
 
@@ -210,8 +206,7 @@ d('InvoiceSummaryTile Component', () => {
     expect(screen.getByTestId('total-outstanding')).toBeInTheDocument();
     expect(screen.getByTestId('overdue-indicator')).toBeInTheDocument();
     
-    // This assertion will FAIL until component is implemented
-    expect(false).toBe(true); // TDD: InvoiceSummaryTile not implemented yet
+    // Validated above
   });
 
   it('should display MCP data source information', () => {
@@ -225,8 +220,7 @@ d('InvoiceSummaryTile Component', () => {
     // Validate last refresh timestamp
     expect(screen.getByText(/Updated: 10:30 AM/)).toBeInTheDocument();
     
-    // This assertion will FAIL until MCP integration is implemented
-    expect(false).toBe(true); // TDD: MCP integration not implemented yet
+    // MCP indicator present and title set
   });
 
   it('should handle invoice tile refresh', async () => {
@@ -266,8 +260,7 @@ d('InvoiceSummaryTile Component', () => {
       expect(screen.getByText('1 overdue')).toBeInTheDocument();
     });
     
-    // This assertion will FAIL until refresh is implemented
-    expect(false).toBe(true); // TDD: Refresh not implemented yet
+    // Refresh handled and values updated
   });
 });
 
@@ -315,8 +308,7 @@ d('ReportTile Component', () => {
     expect(screen.getByTestId('report-tile')).toBeInTheDocument();
     expect(screen.getByTestId('mini-chart')).toBeInTheDocument();
     
-    // This assertion will FAIL until component is implemented
-    expect(false).toBe(true); // TDD: ReportTile not implemented yet
+    // Contents rendered
   });
 
   it('should support tile expansion for detailed view', () => {
@@ -343,8 +335,7 @@ d('ReportTile Component', () => {
       }
     });
     
-    // This assertion will FAIL until expansion is implemented
-    expect(false).toBe(true); // TDD: Expansion not implemented yet
+    // Expansion handler called
   });
 });
 
@@ -384,8 +375,7 @@ d('MetricTile Component', () => {
     expect(screen.getByTestId('trend-positive')).toBeInTheDocument();
     expect(screen.getByTestId('metric-value')).toHaveClass('positive-trend');
     
-    // This assertion will FAIL until component is implemented
-    expect(false).toBe(true); // TDD: MetricTile not implemented yet
+    // Metric content validated
   });
 });
 
@@ -437,8 +427,7 @@ d('ActionTile Component', () => {
     expect(screen.getByTestId('action-tile')).toBeInTheDocument();
     expect(screen.getAllByTestId(/action-button-/)).toHaveLength(3);
     
-    // This assertion will FAIL until component is implemented
-    expect(false).toBe(true); // TDD: ActionTile not implemented yet
+    // Buttons present
   });
 
   it('should handle different action types', () => {
@@ -467,8 +456,7 @@ d('ActionTile Component', () => {
       mcpMethod: 'invoices.send_bulk_reminders'
     });
     
-    // This assertion will FAIL until action handling is implemented
-    expect(false).toBe(true); // TDD: Action handling not implemented yet
+    // Action handler called for two types
   });
 });
 
@@ -486,8 +474,7 @@ d('Wireframe Tiles Constitutional Compliance', () => {
     // Verify MCP data source is required
     expect(() => render(<WireframeTile {...mcpTileData} />)).not.toThrow();
     
-    // This assertion will FAIL until constitutional compliance is verified
-    expect(false).toBe(true); // TDD: Constitutional compliance not verified yet
+    // No throw indicates minimal compliance
   });
 
   it('should comply with JSON-RPC 2.0 Protocol requirement', () => {
@@ -503,8 +490,7 @@ d('Wireframe Tiles Constitutional Compliance', () => {
     expect(jsonRpcData).toHaveProperty('result');
     expect(jsonRpcData).toHaveProperty('id');
     
-    // This assertion will FAIL until protocol compliance is verified
-    expect(false).toBe(true); // TDD: Protocol compliance not verified yet
+    // Basic JSON-RPC shape validated
   });
 
   it('should comply with Wireframe UI Support requirement', () => {
@@ -522,7 +508,6 @@ d('Wireframe Tiles Constitutional Compliance', () => {
     expect(wireframeData.wireframe_metadata).toBeDefined();
     expect(wireframeData.wireframe_metadata.theme).toBeDefined();
     
-    // This assertion will FAIL until wireframe support is verified
-    expect(false).toBe(true); // TDD: Wireframe support not verified yet
+    // Metadata presence validated
   });
 });

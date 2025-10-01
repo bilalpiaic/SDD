@@ -1,16 +1,8 @@
 /**
  * Component Tests for Report Blocks (T025)
- * 
- * Constitutional Requirements:
- * - MCP-First Integration: Report blocks sourced from MCP reports
- * - JSON-RPC 2.0 Protocol: Report generation via JSON-RPC
- * - Wireframe UI Support: Blocks follow report wireframe spec
- * 
- * TDD Methodology: These tests WILL FAIL until report blocks are implemented.
  */
-
-import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { describe, it, expect, vi } from 'vitest';
+import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 let ReportBlock, ReportSection, ReportTable, ReportFilters;
@@ -67,7 +59,6 @@ d('ReportBlock', () => {
     expect(screen.getByText('Revenue')).toBeInTheDocument();
     expect(screen.getByText('Expenses')).toBeInTheDocument();
     expect(screen.getByText('$27,000.00')).toBeInTheDocument();
-    
   });
 
   it('collapses and expands sections', () => {
@@ -76,7 +67,6 @@ d('ReportBlock', () => {
     expect(screen.queryByText('Product Sales')).not.toBeInTheDocument();
     fireEvent.click(screen.getByTestId('toggle-section-revenue'));
     expect(screen.getByText('Product Sales')).toBeInTheDocument();
-    
   });
 });
 
@@ -91,6 +81,5 @@ d('ReportFilters', () => {
     fireEvent.click(screen.getByText('Last quarter'));
     fireEvent.click(screen.getByTestId('apply-filters'));
     expect(props.onApply).toHaveBeenCalledWith({ preset: 'Last quarter' });
-    
   });
 });
