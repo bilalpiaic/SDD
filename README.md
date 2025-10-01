@@ -199,3 +199,35 @@ Example JSON-RPC request structure:
 - "Update Project #12 status to Completed." → Projects → UpdateProject (JSON-RPC call)  
 - "Show all active projects." → Projects → GetProjects (JSON-RPC call)  
 ```
+
+## Quickstart (Dev)
+
+Frontend
+- cd frontend
+- npm install
+- npm run dev
+
+Backend
+- cd backend
+- pip install -U uv
+- uvicorn src.main:app --reload
+
+Set `NEXT_PUBLIC_API_BASE` in the frontend to point to the backend (defaults to http://localhost:8000).
+
+## Production-like with Docker
+
+- docker compose up --build
+  - Backend: http://localhost:8000
+  - Frontend: http://localhost:3000
+
+Adjust CORS origins in `backend/src/main.py` for production.
+
+## Tests
+
+- Frontend: `cd frontend && npm run test:run`
+- Backend: `cd backend && pytest`
+
+## Docs
+
+- Contracts: `specs/001-build-an-application/contracts/`
+- API index: `docs/api/README.md`

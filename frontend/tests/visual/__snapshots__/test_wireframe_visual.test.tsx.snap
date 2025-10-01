@@ -1,0 +1,19 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`WireframeTile visual snapshot > renders consistent structure 1`] = `
+<div
+  data-testid="wireframe-tile-report"
+>
+  <div>
+    Demo
+  </div>
+  <div
+    data-testid="mini-chart"
+  />
+  <button
+    data-testid="expand-button"
+  >
+    Expand
+  </button>
+</div>
+`;
