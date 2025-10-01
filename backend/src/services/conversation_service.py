@@ -1,6 +1,6 @@
 from __future__ import annotations
 from typing import Optional
-from models import Conversation, MCPRequest, MCPResponse, MCPAuthContext
+from models import Conversation, MCPRequest, MCPResponse, MCPAuthContext, JSONRPCError
 from .session_service import SessionService
 from mcp.jsonrpc_client import JSONRPCClient
 
@@ -31,9 +31,21 @@ class ConversationService:
         # Construct and execute MCP request
         req = MCPRequest(method=intent, params={"query": user_input}, id=conv.conversation_id, auth_context=auth)
         conv.mcp_request = req
-        resp: MCPResponse = await self.rpc.call(req.method, req.params, auth=auth, request_id=req.id)
-        conv.mcp_response = resp
-        conv.status = "completed" if resp.error is None else "error"
-        # UI response can be normalized later
-        conv.ui_response = resp.result
+        try:
+            resp: MCPResponse = await self.rpc.call(
+                req.method, req.params, auth=auth, request_id=req.id
+            )
+            conv.mcp_response = resp
+            conv.status = "completed" if resp.error is None else "error"
+            # UI response can be normalized later
+            conv.ui_response = resp.result
+        except Exception as e:
+            # Graceful fallback when MCP server is unavailable in tests/dev
+            conv.status = "error"
+            conv.mcp_response = MCPResponse(
+                id=req.id,
+                result=None,
+                error=JSONRPCError(code=-32000, message=str(e)),
+            )
+            conv.ui_response = {"error": "MCP server unavailable", "detail": str(e)}
         return conv

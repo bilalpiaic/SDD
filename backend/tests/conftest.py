@@ -78,3 +78,9 @@ def constitutional_requirements() -> Dict[str, str]:
         "modular_architecture": "Plugin-ready design",
         "extensibility": "Future-proof patterns"
     }
+
+
+@pytest.fixture
+def anyio_backend():
+    """Force pytest-anyio to use asyncio backend to avoid requiring trio installation."""
+    return "asyncio"
