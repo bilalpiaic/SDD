@@ -1,3 +1,4 @@
+"use client";
 const React = require('react');
 
 function ChatInterface(props) {

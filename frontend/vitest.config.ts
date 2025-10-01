@@ -17,6 +17,7 @@ export default defineConfig({
     globals: true,
     setupFiles: ['./tests/setup/vitest.setup.ts'],
     css: false,
+    include: ['tests/**/*.test.jsx', 'tests/**/*.test.tsx'],
     reporters: ['basic'],
     coverage: { enabled: false }
   }

@@ -25,6 +25,8 @@ async def send_message(payload: MessageRequest):
         from models import UserSession
 
         sessions.create(UserSession(session_id=payload.session_id))
+    else:
+        sessions.touch(payload.session_id)
     conv = await conv_service.process(payload.session_id, payload.message)
     return conv.model_dump()
 
@@ -37,4 +39,6 @@ class HistoryRequest(BaseModel):
 async def chat_history(session_id: str):
     # Placeholder: return empty or future persisted conversations
     s = sessions.get(session_id)
+    if s:
+        sessions.touch(session_id)
     return {"session_id": session_id, "history": (s.conversation_history if s else [])}

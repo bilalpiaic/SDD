@@ -1,6 +1,9 @@
 'use client';
 
+"use client";
 import React, { useState } from 'react';
+import Link from 'next/link';
+import MainLayout from '@/components/layout/MainLayout';
 import { motion } from 'framer-motion';
 import { MessageCircle, Settings, BarChart3, Users, FileText, DollarSign } from 'lucide-react';
 
@@ -100,7 +103,8 @@ export default function HomePage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <MainLayout>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header Section */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-4">
@@ -126,7 +130,7 @@ export default function HomePage() {
       </div>
 
       {/* MCP Modules Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {wireframeTiles.map((tile, index) => {
           const IconComponent = tile.icon;
           return (
@@ -190,6 +194,10 @@ export default function HomePage() {
         <h3 className="text-lg font-medium text-gray-900 mb-4">
           Implementation Status
         </h3>
+        <div className="mb-4">
+          <Link className="text-blue-600 underline mr-4" href="/dashboard">Go to Dashboard</Link>
+          <Link className="text-blue-600 underline" href="/auth/callback?code=dummy&state=abc">Simulate OAuth Callback</Link>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
           <div>
             <h4 className="font-medium text-gray-700 mb-2">✅ Completed:</h4>
@@ -211,6 +219,7 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </MainLayout>
   );
 }
